@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: thewapp.azurecr.io/looks-api-dotnet:latest  # Replace 'myacr' with your ACR name
+        image: thewapp.azurecr.io/looks-api-dotnet/latest  # Replace 'myacr' with your ACR name
         ports:
         - containerPort: 80
           name: looks-api-port
