@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: looks-api-service
+spec:
+  selector:
+    app: looks-api-dotnet
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: looks-api-port
+  type: LoadBalancer

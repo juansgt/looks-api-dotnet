@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: looks-api-dotnet
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: looks-api-dotnet
+  template:
+    metadata:
+      labels:
+        app: looks-api-dotnet
+    spec:
+      containers:
+      - name: nginx
+        image: myacr.azurecr.io/nginx:latest  # Replace 'myacr' with your ACR name
+        ports:
+        - containerPort: 80
+          name: looks-api-port
