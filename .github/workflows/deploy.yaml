@@ -22,7 +22,7 @@ jobs:
     - name: Build and Publish
       run: |
         dotnet restore
-        dotnet publish -c Release -o $(Build.ArtifactStagingDirectory)
+        dotnet publish -c Release -o out
 
     - name: Azure CLI Login
       uses: azure/login@v1
@@ -34,7 +34,7 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
-        docker build -t thewapp.azurecr.io/looks-api-dotnet:latest $(Build.ArtifactStagingDirectory)
+        docker build -t thewapp.azurecr.io/looks-api-dotnet:latest .
         docker push thewapp.azurecr.io/looks-api-dotnet:latest
 
     - name: Azure Kubernetes Set Context
