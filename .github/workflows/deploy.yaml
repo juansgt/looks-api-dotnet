@@ -41,8 +41,8 @@ jobs:
       uses: azure/aks-set-context@v3.2
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-        cluster-name: ${{ secrets.AKS_CLUSTER_NAME }}
-        resource-group: ${{ secrets.AKS_RESOURCE_GROUP }}
+        cluster-name: "aks-the-wapp"
+        resource-group: "the-wapp"
 
     - name: Deploy to AKS
       run: |
