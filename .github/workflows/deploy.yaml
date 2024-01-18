@@ -40,11 +40,16 @@ jobs:
     - name: Azure Kubernetes Set Context
       uses: azure/aks-set-context@v3.2
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+      #  creds: ${{ secrets.AZURE_CREDENTIALS }}
         cluster-name: "aks-the-wapp"
         resource-group: "the-wapp"
 
-    - name: Deploy to AKS
-      run: |
-        kubectl apply -f k8s/deployment.yaml
-        kubectl apply -f k8s/service.yaml
+    - uses: Azure/k8s-deploy@v4
+      name: Deploys application
+      with:
+        action: deploy
+        images: thewapp.azurecr.io/looks-api-dotnet:latest
+        manifests: |
+          k8s/deployment.yaml
+          k8s/service.yaml
+        namespace: default 
